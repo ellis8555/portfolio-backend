@@ -1,6 +1,7 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
+const cors = require("cors");
 const { connectToDb } = require("./db/connect");
 
 // variables
@@ -8,6 +9,13 @@ const app = express();
 const PORT = process.env.PORT || 3500;
 
 // middleware
+// cors
+app.use(
+  cors({
+    origin: "http://127.0.0.1:9000",
+  })
+);
+// json
 app.use(express.json());
 
 // get connection to the database
