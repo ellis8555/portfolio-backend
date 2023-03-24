@@ -2,20 +2,22 @@ const contactMeMessage = require("../../schemas/contact-me");
 
 const submitMessage = async (req, res) => {
   const { name, userMessage } = req.body;
-  const newMessage = await new contactMeMessage({ name, userMessage });
-  try {
-    await newMessage.save();
-    res
-      .status(200)
-      .json({ success: "your message has been submitted", name, userMessage });
-  } catch (error) {
-    const getErrorKeys = Object.keys(error.errors);
-    const errorMessages = [];
-    getErrorKeys.forEach((errorName) => {
-      errorMessages.push(error.errors[errorName].properties.message);
+  if (!name) {
+    res.status(400).json({ message: "Please enter a name", field: "name" });
+  }
+  if (!userMessage) {
+    res.status(400).json({
+      message: "Don't forget to leave a comment",
+      field: "userMessage",
     });
-    res.status(500).json({ error: errorMessages });
+  }
+
+  try {
+    const newMessage = await new contactMeMessage({ name, userMessage });
+    await newMessage.save();
+    res.status(201).json({ message: "Your message has been submitted", name });
+  } catch (e) {
+    res.status(400).json({ error: e.errors });
   }
 };
-
 module.exports = submitMessage;
