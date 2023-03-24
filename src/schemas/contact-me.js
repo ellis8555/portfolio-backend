@@ -10,7 +10,7 @@ const contactMeMessage = new mongoose.Schema(
     },
     userMessage: {
       type: String,
-      maxLength: [100, `max character limit is 100`],
+      maxLength: [200, `max character limit is 200`],
       required: true,
     },
   },
