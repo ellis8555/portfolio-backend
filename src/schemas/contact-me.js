@@ -5,12 +5,12 @@ const contactMeMessage = new mongoose.Schema(
     name: {
       type: String,
       minLength: [2, "minimum of 2 characters required"],
-      maxLength: [20, "maximum of 20 characters allowed"],
+      maxLength: [20, "maximum of 25 characters allowed"],
       required: true,
     },
     userMessage: {
       type: String,
-      maxLength: [100, `max character limit is 100`],
+      maxLength: [250, `max character limit is 250`],
       required: true,
     },
   },

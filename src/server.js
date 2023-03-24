@@ -17,5 +17,3 @@ app.use(express.json());
 
 // routes
 app.use("/contact", require("./routes/contact"));
-
-// server listening
