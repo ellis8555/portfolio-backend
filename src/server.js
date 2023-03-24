@@ -1,10 +1,20 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const { connectToDb } = require("./db/connect");
 
 // variables
 const app = express();
 const PORT = process.env.PORT || 3500;
+
+// cors
+
+app.use(
+  cors({
+    origin: "https://ellis8555.github.io",
+    methods: ["GET", "POST"],
+  })
+);
 
 // get connection to the database
 connectToDb().then(() => {
