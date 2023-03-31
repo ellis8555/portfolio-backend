@@ -7,8 +7,10 @@ const { connectToDb } = require("./db/connect");
 const app = express();
 const PORT = process.env.PORT || 3500;
 
-// cors
+// middleware
+app.use(express.json());
 
+// cors
 app.use(
   cors({
     origin: "http://localhost:9000",
@@ -22,8 +24,6 @@ connectToDb().then(() => {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });
 
-// middleware
-app.use(express.json());
-
 // routes
 app.use("/contact", require("./routes/contact"));
+app.use("/user", require("./routes/user"));
