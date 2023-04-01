@@ -28,10 +28,12 @@ const loginUser = async (req, res) => {
           .cookie("access-token", accessToken, {
             maxAge: 3_600_000,
             secure: true,
+            path: "/",
           })
           .cookie("username", user.username, {
             maxAge: 3_600_000,
             secure: true,
+            path: "/",
           })
           .status(200)
           .json({
