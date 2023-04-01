@@ -28,13 +28,13 @@ const loginUser = async (req, res) => {
           .cookie("access-token", accessToken, {
             maxAge: 3_600_000,
             secure: true,
-            SameSite: "none",
+            SameSite: "None",
             path: "/",
           })
           .cookie("username", user.username, {
             maxAge: 3_600_000,
             secure: true,
-            SameSite: "none",
+            SameSite: "None",
             path: "/",
           })
           .status(200)
