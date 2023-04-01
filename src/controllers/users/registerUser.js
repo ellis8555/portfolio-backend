@@ -27,24 +27,11 @@ const registerUser = async (req, res) => {
       const newUser = new User(credentials);
       await newUser.save();
       const accessToken = createToken(credentials);
-      res
-        .status(201)
-        .cookie("access-token", accessToken, {
-          maxAge: 3_600_000,
-          secure: true,
-          SameSite: "None",
-          path: "/",
-        })
-        .cookie("username", username, {
-          maxAge: 3_600_000,
-          secure: true,
-          SameSite: "None",
-          path: "/",
-        })
-        .json({
-          username,
-          message: `${username} your account has been created!`,
-        });
+      res.status(201).json({
+        accessToken,
+        username,
+        message: `${username} your account has been created!`,
+      });
     } else {
       res.status(409).json({
         message: "That username is already taken. Please try another username",

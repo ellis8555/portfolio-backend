@@ -24,24 +24,11 @@ const loginUser = async (req, res) => {
       const credentialsMatch = await bcrypt.compare(password, user.password);
       if (credentialsMatch) {
         const accessToken = createToken(user);
-        res
-          .cookie("access-token", accessToken, {
-            maxAge: 3_600_000,
-            secure: true,
-            SameSite: "None",
-            path: "/",
-          })
-          .cookie("username", user.username, {
-            maxAge: 3_600_000,
-            secure: true,
-            SameSite: "None",
-            path: "/",
-          })
-          .status(200)
-          .json({
-            username,
-            message: `${username} you are now signed in`,
-          });
+        res.status(200).json({
+          accessToken,
+          username,
+          message: `${username} you are now signed in`,
+        });
       } else {
         res.status(404).json({
           message: "Username and password don't match",
