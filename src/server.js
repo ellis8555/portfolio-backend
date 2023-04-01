@@ -13,7 +13,7 @@ app.use(express.json());
 // cors
 app.use(
   cors({
-    origin: "http://localhost:9000",
+    origin: process.env.ORIGIN,
     credentials: true,
     methods: ["GET", "POST"],
   })
