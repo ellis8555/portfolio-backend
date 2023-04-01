@@ -32,11 +32,13 @@ const registerUser = async (req, res) => {
         .cookie("access-token", accessToken, {
           maxAge: 3_600_000,
           secure: true,
+          samesite: "none",
           path: "/",
         })
         .cookie("username", username, {
           maxAge: 3_600_000,
           secure: true,
+          samesite: "none",
           path: "/",
         })
         .json({
