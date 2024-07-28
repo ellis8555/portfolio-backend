@@ -13,8 +13,7 @@ app.use(express.json());
 // cors
 app.use(
   cors({
-    // origin: [process.env.ORIGIN, process.env.ORIGIN_REACT],
-    origin: "*",
+    origin: [process.env.ORIGIN, process.env.ORIGIN_REACT],
     methods: ["GET", "POST"],
   })
 );
