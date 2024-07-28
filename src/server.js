@@ -13,7 +13,7 @@ app.use(express.json());
 // cors
 app.use(
   cors({
-    origin: "https://ellis8555.github.io",
+    origin: [process.env.ORIGIN, process.env.ORIGIN_REACT],
     methods: ["GET", "POST"],
   })
 );
