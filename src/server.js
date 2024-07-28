@@ -13,13 +13,11 @@ app.use(express.json());
 // cors
 app.use(
   cors({
-    origin: [process.env.ORIGIN, process.env.ORIGIN_REACT],
+    // origin: [process.env.ORIGIN, process.env.ORIGIN_REACT],
+    origin: "*",
     methods: ["GET", "POST"],
   })
 );
-
-// Handle preflight requests
-app.options('*', cors());
 
 // get connection to the database
 connectToDb().then(() => {
