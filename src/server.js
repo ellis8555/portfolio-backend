@@ -27,3 +27,5 @@ connectToDb().then(() => {
 // routes
 app.use("/contact", require("./routes/contact"));
 app.use("/user", require("./routes/user"));
+
+export default app;
