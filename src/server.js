@@ -28,4 +28,4 @@ connectToDb().then(() => {
 app.use("/contact", require("./routes/contact"));
 app.use("/user", require("./routes/user"));
 
-module.exports = { app };
+module.exports = app ;
